@@ -11,8 +11,8 @@ function setup() {
 
 function newDrawing(data){
   noStroke();
-  fill("#A8271D");
-  ellipse(data.x, data.y, 36, 36);
+  fill("#AF1B1B");
+  ellipse(data.x, data.y, 20, 20);
 }
 
 function mouseDragged(){
@@ -27,8 +27,8 @@ function mouseDragged(){
   socket.emit('mouse', data)
 
   noStroke();
-  fill("#AF1B1B");
-  ellipse(mouseX, mouseY, 60, 60);
+  fill("#E2252B");
+  ellipse(mouseX, mouseY, 20, 20);
 }
 
 function draw() {
@@ -38,8 +38,8 @@ function draw() {
     textFont("VT323");
     textAlign(CENTER);
     textSize(60);
-    fill(255);
+    fill("#AF1B1B");
 
-    text(thirdText, width/2, 100);
+    text(thirdText, width/2, 200);
 
 }
