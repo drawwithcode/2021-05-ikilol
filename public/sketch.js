@@ -15,7 +15,7 @@ function newBroadcast(data) {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  background(0);
+  background(200);
 
   textAlign(CENTER, CENTER);
   textSize(70);
