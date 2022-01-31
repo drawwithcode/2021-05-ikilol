@@ -13,48 +13,31 @@ function newBroadcast(data) {
   circle(data.x, data.y, 20);
 }
 
-var socket;
-var thirdText;
+function preload() {
+  //caricamento sfondo
+  sfondo = loadImage("./asset/background.png");
+}
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  background("#F0C1BC");
+  image(sfondo, 0, 0, windowWidth, windowHeight);
 
-  socket = io.connect('http://localhost:3000');
-  socket.on('mouse', newDrawing)
-}
-
-function newDrawing(data){
-  noStroke();
-  fill("#AF1B1B");
-  ellipse(data.x, data.y, 20, 20);
-}
-
-function mouseDragged(){
-  console.log(mouseX + ',' + mouseY);
-
-  var data = {
-
-    x: mouseX,
-    y: mouseY
-  }
-
-  socket.emit('mouse', data)
-
-  noStroke();
-  fill("#E2252B");
-  ellipse(mouseX, mouseY, 20, 20);
+  textAlign(CENTER, CENTER);
+  textSize(70);
+  fill("black");
+  text("PICK YOUR SIDE", windowWidth / 2, windowHeight / 2 - 200);
 }
 
 function draw() {
+  fill("black");
+  noStroke();
+  circle(mouseX, mouseY, 20);
+}
 
-  var thirdText = "Connect with someone and show some love!";
-  
-    textFont("VT323");
-    textAlign(CENTER);
-    textSize(60);
-    fill("#AF1B1B");
-
-    text(thirdText, width/2, 200);
-
+function mouseMoved() {
+  let message = {
+    x: mouseX,
+    y: mouseY,
+  };
+  clientSocket.emit("mouse", message);
 }
