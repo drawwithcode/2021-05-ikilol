@@ -1,6 +1,4 @@
 {
-  $ cat Procfile
-  web: npm start
   "name": "assignment05-ventura",
   "version": "1.0.0",
   "description": "",
