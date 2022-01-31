@@ -13,19 +13,14 @@ function newBroadcast(data) {
   circle(data.x, data.y, 20);
 }
 
-function preload() {
-  //caricamento sfondo
-  sfondo = loadImage("./asset/background.png");
-}
-
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  image(sfondo, 0, 0, windowWidth, windowHeight);
+  background(0);
 
   textAlign(CENTER, CENTER);
   textSize(70);
   fill("black");
-  text("PICK YOUR SIDE", windowWidth / 2, windowHeight / 2 - 200);
+  text("show some love <3", windowWidth / 2, windowHeight / 2 - 200);
 }
 
 function draw() {
