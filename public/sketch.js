@@ -8,23 +8,23 @@ function newConnection() {
 }
 
 function newBroadcast(data) {
-  fill("red");
+  fill("#ff0a54");
   noStroke();
   circle(data.x, data.y, 20);
 }
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  background(200);
+  background("#fff0f3");
 
   textAlign(CENTER, CENTER);
   textSize(70);
-  fill("black");
+  fill("#ff7096");
   text("show some love <3", windowWidth / 2, windowHeight / 2 - 200);
 }
 
 function draw() {
-  fill("black");
+  fill('#ff7096');
   noStroke();
   circle(mouseX, mouseY, 20);
 }
