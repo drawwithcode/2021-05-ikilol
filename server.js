@@ -12,29 +12,23 @@ console.log("Server is running on https://localhost:" + port);
 
 app.use(express.static("public"));
 
-//  Import socket
-let serverSocket = require("socket.io");
-//  Assign the variable that runs the express
-let io = serverSocket(server);
-let connectedSockets = 0;
-//  On connection run the newConnection() function
-io.on("connection", newConnection);
-io.on("disconnect", () => {
-  connectedSockets--;
-});
+app.use(express.static('public'));
 
-//  What happens when a new client connects
-function newConnection(newSocket) {
-  console.log(newSocket.id);
-  connectedSockets++;
-  // console.log("connectedSockets:", connectedSockets);
-  newSocket.emit("number", connectedSockets);
-  newSocket.on("mouse", mouseMessage);
-  // newSocket.broadcast.emit("playerBroadcast", connectedSockets);
+console.log("server running");
 
-  function mouseMessage(message) {
-    console.log("message:", message);
-    //  Breadcasting the meassage to all the other clients
-    newSocket.broadcast.emit("mouseBroadcast", message);
-  }
+var socket = require('socket.io');
+
+var io = socket(server);
+
+io.sockets.on('connection', newConnection);
+
+function newConnection(socket){
+    console.log('newConnection '+ socket.id);
+
+    socket.on('mouse', mouseMsg);
+
+    function mouseMsg(data) {
+        socket.broadcast.emit('mouse', data)
+        console.log(data);
+    }
 }
