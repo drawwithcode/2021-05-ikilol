@@ -1,4 +1,5 @@
 let clientSocket = io();
+let message = 0;
 
 clientSocket.on("connect", newConnection);
 clientSocket.on("mouseBroadcast", newBroadcast);
@@ -10,7 +11,7 @@ function newConnection() {
 function newBroadcast(data) {
   fill("#ff0a54");
   noStroke();
-  circle(data.x, data.y, 20);
+  circle(500, 500, data);
 }
 
 function setup() {
@@ -20,19 +21,16 @@ function setup() {
   textAlign(CENTER, CENTER);
   textSize(70);
   fill("#ff7096");
-  text("show some love <3", windowWidth / 2, windowHeight / 2 - 200);
+  text("show some love", windowWidth / 2, windowHeight / 2 - 200);
 }
 
 function draw() {
   fill('#ff7096');
   noStroke();
-  circle(mouseX, mouseY, 20);
+  circle(300, 300, message);
 }
 
-function mouseMoved() {
-  let message = {
-    x: mouseX,
-    y: mouseY,
-  };
+function mousePressed() {
+   message += 10;
   clientSocket.emit("mouse", message);
 }

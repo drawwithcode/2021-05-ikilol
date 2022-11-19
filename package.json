@@ -19,6 +19,7 @@
   "homepage": "https://github.com/drawwithcode/2021-05-ikilol#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "socket.io": "^4.4.0"
+    "socket.io": "^4.5.3",
+    "surge": "^0.23.1"
   }
 }
